@@ -15,6 +15,7 @@ class Producto(models.Model):
     descripcion = models.TextField()
     precio_base = models.DecimalField(max_digits=10, decimal_places=2)
     tipo = models.ForeignKey(TipoProducto, on_delete=models.CASCADE)
+    
 
 class Tienda(models.Model):
     def __str__(self):
@@ -23,3 +24,5 @@ class Tienda(models.Model):
     nombre = models.CharField(max_length=40)
     direccion = models.CharField(max_length=100)
     contacto = models.CharField(max_length=50)
+    productos = models.ManyToManyField(Producto)
+
