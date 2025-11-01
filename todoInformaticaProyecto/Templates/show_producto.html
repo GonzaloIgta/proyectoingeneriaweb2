@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ producto.nombre }} - Todo Informática{% endblock %}
+
+{% block content %}
+  <a href="{% url 'detail' producto.tipo.id %}" class="btn btn-outline-secondary mb-4">&larr; Volver a {{ producto.tipo.nombre }}</a>
+
+  <div class="card shadow-sm border-0">
+    <div class="card-body p-4 p-md-5">
+      
+      <div class="row align-items-center">
+        <div class="col-md-8">
+          <h1 class="display-5 mb-0">{{ producto.nombre }}</h1>
+          <p class="lead text-muted">{{ producto.tipo.nombre }}</p>
+        </div>
+        <div class="col-md-4 text-md-end">
+          <span class="display-4 text-primary fw-bold">{{ producto.precio_base }} €</span>
+        </div>
+      </div>
+
+      <hr class="my-4">
+
+      <h2 class="fs-3 mb-3">Descripción</h2>
+      <p class="fs-5">{{ producto.descripcion|linebreaks }}</p>
+
+      <h2 class="fs-3 mt-5 mb-3">Disponible en las siguientes tiendas:</h2>
+      
+      {% with tiendas=producto.tienda_set.all %}
+        {% if tiendas %}
+          <div class="list-group">
+            {% for tienda in tiendas %}
+              <a href="{% url 'tienda' tienda.id %}" class="list-group-item list-group-item-action">
+                <h5 class="mb-1">{{ tienda.nombre }}</h5>
+                <small class="text-muted">{{ tienda.direccion }}</small>
+              </a>
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="alert alert-warning" role="alert">
+            Este producto no está disponible en ninguna tienda actualmente.
+          </div>
+        {% endif %}
+      {% endwith %}
+
+    </div>
+  </div>
+{% endblock %}
