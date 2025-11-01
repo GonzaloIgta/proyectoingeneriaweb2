@@ -10,25 +10,25 @@ def index_tipoProducto(request):
 	return HttpResponse(output)
 
 #devuelve los datos de un tipo de producto
-def show_tipoProducto(request, nombre):
-	tipo = TipoProducto.objects.get(pk=nombre)
-	output = f'Detalles del tipo de producto: {nombre}'
+def show_tipoProducto(request, tipoproducto_id):
+	tipo = TipoProducto.objects.get(pk=tipoproducto_id)
+	output = f'Detalles del tipo de producto: {tipo.nombre}'
 	return HttpResponse(output)
 
 #devuelve los productos de un tipo de producto
-def index_producto(request, nombre):
-	tipo = TipoProducto.objects.get(pk=nombre)
+def index_producto(request, tipoproducto_id):
+	tipo = TipoProducto.objects.get(pk=tipoproducto_id)
 	output = ', '.join([e.nombre for e in tipo.producto_set.all()])
 	return HttpResponse(output)
 
 #devuelve los detalles de un empleado
-def show_producto(request, nombre):
-	producto = Producto.objects.get(pk=nombre)
+def show_producto(request, producto_id):
+	producto = Producto.objects.get(pk=producto_id)
 	output = f'Detalles del producto: {producto.nombre}, {producto.descripcion}, {str(producto.tipo)}, , {producto.precio_base} € tiendas: {[t.nombre for t in producto.tienda_set.all()]}'
 	return HttpResponse(output)
 
-#devuelve los detalles de una habilidad
-def show_tienda(request, nombre):
-	tienda = Tienda.objects.get(pk=nombre)
-	output = f'Detalles de la tienda: {tienda.id}, {tienda.nombre}. producto: {[p.nombre for p in tienda.productos_set.all()]}'
-	return HttpResponse(output)
+#devuelve los detalles de una tienda
+def show_tienda(request, tienda_id): 
+    tienda = Tienda.objects.get(pk=tienda_id)
+    output = f'Detalles de la tienda: {tienda.id}, {tienda.nombre}. producto: {[p.nombre for p in tienda.productos.all()]}' 
+    return HttpResponse(output)
