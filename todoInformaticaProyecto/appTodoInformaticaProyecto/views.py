@@ -1,42 +1,50 @@
-from django.shortcuts import render  # 'render' ya estaba importado, ¡perfecto!
-from django.http import HttpResponse
+from django.views.generic import ListView, DetailView
 from .models import TipoProducto, Producto, Tienda
 
-# devuelve el listado de tipos de productos
-def index_tipoProducto(request):
-	tipos = TipoProducto.objects.order_by('nombre')
-	context = {'tipos': tipos}
-	return render(request, 'index_tipoProducto.html', context)
+# Devuelve el listado de tipos de productos (usando ListView)
+class IndexTipoProductoView(ListView):
+    model = TipoProducto
+    template_name = 'index_tipoProducto.html'
+    context_object_name = 'tipos'
+    ordering = ['nombre']  # Ordena por nombre
 
-# devuelve los datos de un tipo de producto
-def show_tipoProducto(request, tipoproducto_id):
-	tipo = TipoProducto.objects.get(pk=tipoproducto_id)
-	productos = tipo.producto_set.all()
-	context = {
-		'tipo': tipo,
-		'productos': productos
-	}
-	return render(request, 'show_tipoProducto.html', context)
+# Devuelve los datos de un tipo de producto (usando DetailView, incluyendo productos en contexto)
+class ShowTipoProductoView(DetailView):
+    model = TipoProducto
+    template_name = 'show_tipoProducto.html'
+    context_object_name = 'tipo'
 
-# devuelve los productos de un tipo de producto
-def index_producto(request, tipoproducto_id):
-	tipo = TipoProducto.objects.get(pk=tipoproducto_id)
-	productos = tipo.producto_set.all()
-	context = {
-		'tipo': tipo,
-		'productos': productos
-	}
-	return render(request, 'show_tipoProducto.html', context) 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['productos'] = self.object.producto_set.all()
+        return context
 
+# Devuelve los productos de un tipo de producto (similar a ShowTipoProductoView, pero si es solo lista de productos, usa ListView)
+# Nota: Esta vista parece redundante con show_tipoProducto, ya que usa la misma plantilla y contexto.
+# Si es intencionalmente una lista de productos, la implementamos como ListView filtrada por tipo.
+class IndexProductoView(ListView):
+    model = Producto
+    template_name = 'show_tipoProducto.html'
+    context_object_name = 'productos'
 
-# devuelve los detalles de un empleado
-def show_producto(request, producto_id):
-	producto = Producto.objects.get(pk=producto_id)
-	context = {'producto': producto}
-	return render(request, 'show_producto.html', context) 
+    def get_queryset(self):
+        tipoproducto_id = self.kwargs['tipoproducto_id']
+        return Producto.objects.filter(tipo_id=tipoproducto_id)  # Asumiendo que el campo FK en Producto es 'tipo'
 
-# devuelve los detalles de una tienda
-def show_tienda(request, tienda_id): 
-    tienda = Tienda.objects.get(pk=tienda_id)
-    context = {'tienda': tienda}
-    return render(request, 'show_tienda.html', context)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        tipoproducto_id = self.kwargs['tipoproducto_id']
+        context['tipo'] = TipoProducto.objects.get(pk=tipoproducto_id)
+        return context
+
+# Devuelve los detalles de un producto (usando DetailView)
+class ShowProductoView(DetailView):
+    model = Producto
+    template_name = 'show_producto.html'
+    context_object_name = 'producto'
+
+# Devuelve los detalles de una tienda (usando DetailView)
+class ShowTiendaView(DetailView):
+    model = Tienda
+    template_name = 'show_tienda.html'
+    context_object_name = 'tienda'
