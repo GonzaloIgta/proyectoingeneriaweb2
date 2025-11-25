@@ -1,8 +1,8 @@
 import os
-from django.core.management.base import BaseCommand
-from django.db import transaction
-from django.core.files import File
-from django.conf import settings
+from django.core.management.base import BaseCommand # type: ignore
+from django.db import transaction # type: ignore
+from django.core.files import File # type: ignore
+from django.conf import settings # type: ignore
 from appTodoInformaticaProyecto.models import TipoProducto, Producto, Tienda 
 
 class Command(BaseCommand):
