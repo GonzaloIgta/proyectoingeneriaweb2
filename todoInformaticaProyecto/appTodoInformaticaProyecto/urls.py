@@ -1,7 +1,11 @@
 from django.urls import path
 from .views import (
-    IndexTipoProductoView, ShowTipoProductoView, IndexProductoView, 
-    ShowProductoView, ShowTiendaView
+    IndexTipoProductoView, 
+    ShowTipoProductoView, 
+    IndexProductoView, 
+    ShowProductoView, 
+    ShowTiendaView,
+    add_to_cart_ajax    
 )
 
 urlpatterns = [
@@ -11,4 +15,6 @@ urlpatterns = [
     path('tipos/<int:tipoproducto_id>/productos/', IndexProductoView.as_view(), name='index_producto'),
     path('productos/<int:pk>/', ShowProductoView.as_view(), name='producto'),  
     path('tiendas/<int:pk>/', ShowTiendaView.as_view(), name='tienda'),
+    path('api/add-to-cart/', add_to_cart_ajax, name='add_to_cart_ajax'),
+
 ]
