@@ -1,20 +1,22 @@
 {% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
 
-{% block title %}{{ tienda.nombre }} - Todo Informática{% endblock %}
+{% block title %}{{ tienda.nombre }} - {% trans "Todo Informática" %}{% endblock %}
 
 {% block content %}
-  <a href="{% url 'index' %}" class="btn btn-outline-secondary mb-4">&larr; Volver al inicio</a>
+  <a href="{% url 'index' %}" class="btn btn-outline-secondary mb-4">&larr; {% trans "Volver al inicio" %}</a>
 
   <div class="card shadow-sm border-0">
     <div class="card-body p-4 p-md-5">
 
       <h1 class="display-5 mb-2">{{ tienda.nombre }}</h1>
-      <p class="lead text-muted"><i class="bi bi-geo-alt-fill"></i> {{ tienda.direccion }}</p>
-      <p class="fs-5"><i class="bi bi-telephone-fill"></i> Contacto: {{ tienda.contacto }}</p>
+      <p class="lead text-muted"><i class="bi bi-geo-alt-fill"></i> {% trans "Dirección" %}: {{ tienda.direccion }}</p>
+      <p class="fs-5"><i class="bi bi-telephone-fill"></i> {% trans "Contacto" %}: {{ tienda.contacto }}</p>
 
       <hr class="my-4">
 
-      <h2 class="fs-3 mb-3">Productos en esta tienda:</h2>
+      <h2 class="fs-3 mb-3">{% trans "Productos en esta tienda:" %}</h2>
 
       {% with productos=tienda.productos.all %}
         {% if productos %}
@@ -25,13 +27,15 @@
                   <h5 class="mb-1">{{ producto.nombre }}</h5>
                   <small class="text-muted">{{ producto.tipo.nombre }}</small>
                 </div>
-                <span class="badge bg-primary rounded-pill fs-6">{{ producto.precio_base }} €</span>
+                {% blocktrans with precio=producto.precio_base %}
+                <span class="badge bg-primary rounded-pill fs-6">{{ precio }} €</span>
+                {% endblocktrans %}
               </a>
             {% endfor %}
           </div>
         {% else %}
           <div class="alert alert-info" role="alert">
-            Esta tienda no tiene productos registrados por el momento.
+            {% trans "Esta tienda no tiene productos registrados por el momento." %}
           </div>
         {% endif %}
       {% endwith %}

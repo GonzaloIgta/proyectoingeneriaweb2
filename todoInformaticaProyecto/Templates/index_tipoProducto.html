@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
 
-{% block title %}Tipos de Producto - Todo Informática{% endblock %}
+{% block title %}{% trans "Tipos de Producto" %} - {% trans "Todo Informática" %}{% endblock %}
 
 {% block content %}
   <div class="text-center mb-5">
-    <h1 class="display-4">Categorías de Productos</h1>
-    <p class="lead text-muted">Explora nuestras categorías de productos informáticos.</p>
+    <h1 class="display-4">{% trans "Categorías de Productos" %}</h1>
+    <p class="lead text-muted">{% trans "Explora nuestras categorías de productos informáticos." %}</p>
   </div>
 
   <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -15,16 +17,16 @@
           <div class="card h-100 shadow-sm border-0">
             <div class="card-body text-center">
               <h5 class="card-title fs-4">{{ tipo.nombre }}</h5>
-              <p class="card-text text-muted">Ver todos los productos de esta categoría.</p>
+              <p class="card-text text-muted">{% trans "Ver todos los productos de esta categoría." %}</p>
               <a href="{% url 'detail' tipo.id %}" class="btn btn-primary">
-                Ver Productos
+                {% trans "Ver Productos" %}
               </a>
             </div>
           </div>
         </div>
       {% endfor %}
     {% else %}
-      <p class="text-center">No hay tipos de producto disponibles.</p>
+      <p class="text-center">{% trans "No hay tipos de producto disponibles." %}</p>
     {% endif %}
   </div>
 {% endblock %}

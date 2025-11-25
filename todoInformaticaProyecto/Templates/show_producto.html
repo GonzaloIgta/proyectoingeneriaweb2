@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block title %}
-  {{ producto.nombre }} - Todo Informática
+  {{ producto.nombre }} - {% trans "Todo Informática" %}
 {% endblock %}
 
 {% block content %}
-<a href="{% url 'detail' producto.tipo.id %}" class="btn btn-outline-secondary mb-4">&larr; Volver a {{ producto.tipo.nombre }}</a>
+<a href="{% url 'detail' producto.tipo.id %}" class="btn btn-outline-secondary mb-4">&larr; {% blocktrans with nombre_tipo=producto.tipo.nombre %}Volver a {{ nombre_tipo }}{% endblocktrans %}</a>
 <div class="card shadow-sm border-0">
   <div class="card-body p-4 p-md-5">
     <div class="row align-items-center">
@@ -14,7 +15,7 @@
         {% if producto.imagen %}
           <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" class="img-fluid mb-4" />
         {% else %}
-          <img src="{% static 'images/no-image.png' %}" alt="Sin imagen disponible" class="img-fluid mb-4" />
+          <img src="{% static 'images/no-image.png' %}" alt="{% trans 'Sin imagen disponible' %}" class="img-fluid mb-4" />
         {% endif %}
         <span class="display-4 text-primary fw-bold">{{ producto.preciobase }}</span>
       </div>
@@ -22,12 +23,12 @@
         <h1 class="display-5 mb-0">{{ producto.nombre }}</h1>
         <p class="lead text-muted">{{ producto.tipo.nombre }}</p>
         <hr class="my-4">
-        <h2 class="fs-3 mb-3">Descripción</h2>
+        <h2 class="fs-3 mb-3">{% trans "Descripción" %}</h2>
         <p class="fs-5">{{ producto.descripcion|linebreaks }}</p>
       </div>
     </div>
     <hr class="my-4">
-    <h2 class="fs-3 mb-3">Disponible en las siguientes tiendas</h2>
+    <h2 class="fs-3 mb-3">{% trans "Disponible en las siguientes tiendas" %}</h2>
     {% with tiendas=producto.tienda_set.all %}
       {% if tiendas %}
         <div class="list-group">
@@ -40,7 +41,7 @@
         </div>
       {% else %}
         <div class="alert alert-warning" role="alert">
-          Este producto no está disponible en ninguna tienda actualmente.
+          {% trans "Este producto no está disponible en ninguna tienda actualmente." %}
         </div>
       {% endif %}
     {% endwith %}

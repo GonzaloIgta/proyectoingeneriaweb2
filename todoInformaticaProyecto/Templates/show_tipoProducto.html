@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
 
-{% block title %}{{ tipo.nombre }} - Todo Informática{% endblock %}
+{% block title %}{{ tipo.nombre }} - {% trans "Todo Informática" %}{% endblock %}
 
 {% block content %}
-  <a href="{% url 'index' %}" class="btn btn-outline-secondary mb-4">&larr; Volver a Categorías</a>
+  <a href="{% url 'index' %}" class="btn btn-outline-secondary mb-4">&larr; {% trans "Volver a Categorías" %}</a>
 
-  <h1 class="display-5 border-bottom pb-3 mb-4">Categoría: {{ tipo.nombre }}</h1>
+  <h1 class="display-5 border-bottom pb-3 mb-4">{% blocktrans with nombre_tipo=tipo.nombre %}Categoría: {{ nombre_tipo }}{% endblocktrans %}</h1>
 
-  <h2 class="fs-3 mb-3">Productos Disponibles</h2>
+  <h2 class="fs-3 mb-3">{% trans "Productos Disponibles" %}</h2>
 
   {% if productos %}
     <div class="list-group">
@@ -17,13 +19,15 @@
             <h5 class="mb-1">{{ producto.nombre }}</h5>
             <small class="text-muted">{{ producto.descripcion|truncatewords:20 }}</small>
           </div>
-          <span class="badge bg-primary rounded-pill fs-6">{{ producto.precio_base }} €</span>
+          {% blocktrans with precio=producto.precio_base %}
+          <span class="badge bg-primary rounded-pill fs-6">{{ precio }} €</span>
+          {% endblocktrans %}
         </a>
       {% endfor %}
     </div>
   {% else %}
     <div class="alert alert-info" role="alert">
-      Actualmente no hay productos disponibles en esta categoría.
+      {% trans "Actualmente no hay productos disponibles en esta categoría." %}
     </div>
   {% endif %}
 
