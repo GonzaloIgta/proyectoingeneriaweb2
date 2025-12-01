@@ -21,9 +21,10 @@
             <h5 class="mb-1">{{ producto.nombre }}</h5>
             <small class="text-muted">{{ producto.descripcion|truncatewords:20 }}</small>
           </div>
-          {# span fuera del blocktrans para no mezclar HTML con traducciones #}
           <span class="badge bg-primary rounded-pill fs-6">
-            {% blocktrans with precio=producto.preciobase %}{{ precio }} €{% endblocktrans %}
+            {% blocktrans with precio=producto.precio %}
+              {{ precio }} €
+            {% endblocktrans %}
           </span>
         </a>
       {% endfor %}
