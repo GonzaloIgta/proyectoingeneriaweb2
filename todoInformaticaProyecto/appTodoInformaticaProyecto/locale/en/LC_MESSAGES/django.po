@@ -7,19 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-01 13:37+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"POT-Creation-Date: 2025-12-01 14:21+0100\n"
+"PO-Revision-Date: 2025-12-01 14:21+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language-Team: English <en@li.org>\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
 #: .\Templates\base.html:9 .\Templates\base.html:24 .\Templates\base.html:78
 #: .\Templates\index_tipoProducto.html:5 .\Templates\show_producto.html:6
-#: .\Templates\show_tienda.html:5 .\Templates\show_tipoProducto.html:5
+#: .\Templates\show_tipoProducto.html:5
 msgid "Todo Informática"
 msgstr "All Informatic"
 
@@ -29,15 +28,75 @@ msgstr "Toggle navigation"
 
 #: .\Templates\base.html:56
 msgid "Inicio (Tipos de Producto)"
-msgstr "Home"
+msgstr "Home (Product Types)"
 
 #: .\Templates\base.html:61
 msgid "Carrito"
-msgstr ""
+msgstr "Cart"
 
 #: .\Templates\base.html:78
 msgid "Todos los derechos reservados."
 msgstr "All rights reserved."
+
+#: .\Templates\carrito.html:4
+msgid "Mi Carrito - Todo Informática"
+msgstr "My Cart - All Things Computing"
+
+#: .\Templates\carrito.html:8
+msgid "Tu Carrito de Compras"
+msgstr "Your Shopping Cart"
+
+#: .\Templates\carrito.html:19
+msgid "Producto"
+msgstr "Product"
+
+#: .\Templates\carrito.html:20
+msgid "Precio"
+msgstr "Price"
+
+#: .\Templates\carrito.html:21
+msgid "Cantidad"
+msgstr "Quantity"
+
+#: .\Templates\carrito.html:22
+msgid "Subtotal"
+msgstr "Subtotal"
+
+#: .\Templates\carrito.html:23
+msgid "Eliminar"
+msgstr "Remove"
+
+#: .\Templates\carrito.html:35
+msgid "Sin imagen"
+msgstr "No image"
+
+#: .\Templates\carrito.html:76
+msgid "Eliminar producto"
+msgstr "Remove product"
+
+#: .\Templates\carrito.html:85
+msgid "TOTAL:"
+msgstr "TOTAL:"
+
+#: .\Templates\carrito.html:95
+msgid "Seguir comprando"
+msgstr "Continue Shopping"
+
+#: .\Templates\carrito.html:96
+msgid "Finalizar Compra"
+msgstr "Proceed to Checkout"
+
+#: .\Templates\carrito.html:102
+msgid "Tu carrito está vacío"
+msgstr "Your cart is empty"
+
+#: .\Templates\carrito.html:103
+msgid "¡Añade algunos productos increíbles!"
+msgstr "Add some amazing products!"
+
+#: .\Templates\carrito.html:104
+msgid "Ir a la tienda"
+msgstr "Go to the shop"
 
 #: .\Templates\index_tipoProducto.html:5
 msgid "Tipos de Producto"
@@ -57,16 +116,16 @@ msgstr "View all products in this category."
 
 #: .\Templates\index_tipoProducto.html:22
 msgid "Ver Productos"
-msgstr "Show Products"
+msgstr "View Products"
 
 #: .\Templates\index_tipoProducto.html:29
 msgid "No hay tipos de producto disponibles."
-msgstr "No product types are available."
+msgstr "No product types available."
 
 #: .\Templates\show_producto.html:10
 #, python-format
 msgid "Volver a %(nombre_tipo)s"
-msgstr "Return to %(nombre_tipo)s"
+msgstr "Back to %(nombre_tipo)s"
 
 #: .\Templates\show_producto.html:20
 msgid "Sin imagen disponible"
@@ -86,40 +145,15 @@ msgstr "Product added!"
 
 #: .\Templates\show_producto.html:52
 msgid "Disponible en las siguientes tiendas"
-msgstr "Available at the following store"
+msgstr "Available in the following stores"
 
 #: .\Templates\show_producto.html:66
 msgid "Este producto no está disponible en ninguna tienda actualmente."
-msgstr "This product is not available in any store"
-
-#: .\Templates\show_tienda.html:8
-msgid "Volver al inicio"
-msgstr "Back to top"
-
-#: .\Templates\show_tienda.html:14
-msgid "Dirección"
-msgstr "Address"
-
-#: .\Templates\show_tienda.html:15
-msgid "Contacto"
-msgstr "Contact"
-
-#: .\Templates\show_tienda.html:19
-msgid "Productos en esta tienda:"
-msgstr "Products in the store"
-
-#: .\Templates\show_tienda.html:31
-#, python-format
-msgid "%(precio)s €"
-msgstr "%(precio)s €"
-
-#: .\Templates\show_tienda.html:38
-msgid "Esta tienda no tiene productos registrados por el momento."
-msgstr "This store does not have any registered products at the moment."
+msgstr "This product is not currently available in any store."
 
 #: .\Templates\show_tipoProducto.html:8
 msgid "Volver a Categorías"
-msgstr "Return to Categories"
+msgstr "Back to Categories"
 
 #: .\Templates\show_tipoProducto.html:11
 #, python-format
@@ -130,14 +164,6 @@ msgstr "Category: %(nombre_tipo)s"
 msgid "Productos Disponibles"
 msgstr "Available Products"
 
-#: .\Templates\show_tipoProducto.html:25
-#, python-format
-msgid ""
-"\n"
-"              %(precio)s €\n"
-"            "
-msgstr ""
-
-#: .\Templates\show_tipoProducto.html:34
+#: .\Templates\show_tipoProducto.html:31
 msgid "Actualmente no hay productos disponibles en esta categoría."
 msgstr "There are currently no products available in this category."

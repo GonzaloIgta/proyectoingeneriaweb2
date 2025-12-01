@@ -19,7 +19,7 @@
         {% else %}
           <img src="{% static 'images/no-image.png' %}" alt="{% trans 'Sin imagen disponible' %}" class="img-fluid mb-4" />
         {% endif %}
-        <span class="display-4 text-primary fw-bold">{{ producto.preciobase }}</span>
+                <span class="display-4 text-primary fw-bold">{{ producto.precio_base }} €</span>
       </div>
 
       <div class="col-md-8">
@@ -37,7 +37,7 @@
                   class="btn btn-success btn-lg me-3">
               <i class="bi bi-cart-plus-fill"></i> {% trans "Añadir al Carrito" %}
           </button>
-          
+            
           <div id="success-message" class="alert alert-success p-2 mb-0" style="display: none;">
               {% trans "¡Producto añadido!" %}
           </div>

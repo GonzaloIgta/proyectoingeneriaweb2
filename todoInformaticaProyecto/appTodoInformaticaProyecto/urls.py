@@ -5,8 +5,8 @@ from .views import (
     IndexProductoView, 
     ShowProductoView, 
     ShowTiendaView,
+    ShowCarritoView,
     add_to_cart_ajax,
-    ver_carrito,
     update_cart_item_ajax, 
     remove_from_cart_ajax
 )
@@ -19,7 +19,7 @@ urlpatterns = [
     path('productos/<int:pk>/', ShowProductoView.as_view(), name='producto'),  
     path('tiendas/<int:pk>/', ShowTiendaView.as_view(), name='tienda'),
     path('api/add-to-cart/', add_to_cart_ajax, name='add_to_cart_ajax'),
-    path('carrito/', ver_carrito, name='carrito'),
+    path('carrito/', ShowCarritoView.as_view(), name='carrito'),
     path("api/update-cart-item/", update_cart_item_ajax, name="update_cart_item_ajax"),
     path("api/remove-from-cart/", remove_from_cart_ajax, name="remove_from_cart_ajax"),
 ]

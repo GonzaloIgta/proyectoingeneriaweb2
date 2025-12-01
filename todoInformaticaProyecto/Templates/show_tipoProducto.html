@@ -22,10 +22,7 @@
             <small class="text-muted">{{ producto.descripcion|truncatewords:20 }}</small>
           </div>
           <span class="badge bg-primary rounded-pill fs-6">
-            {% blocktrans with precio=producto.precio %}
-              {{ precio }} €
-            {% endblocktrans %}
-          </span>
+            {{ producto.precio_base }} € </span>
         </a>
       {% endfor %}
     </div>

@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, TemplateView
 from .models import TipoProducto, Producto, Tienda
 
 
@@ -68,34 +68,44 @@ def actualizar_total_carrito(request):
 
 
 
-def ver_carrito(request):
-    """Renderiza la página del carrito con los productos detallados"""
-    cart = request.session.get('cart', {})
-    items = []
-    total_precio = 0
+class ShowCarritoView(TemplateView):
+    template_name = 'carrito.html'
 
-    for product_id, cantidad in cart.items():
-        try:
-            producto = Producto.objects.get(pk=product_id)
-            subtotal = float(producto.precio_base) * cantidad
-            total_precio += subtotal
-            
-            items.append({
-                'producto': producto,
-                'cantidad': cantidad,
-                'subtotal': subtotal
-            })
-        except Producto.DoesNotExist:
-            continue
+    def get_context_data(self, **kwargs):
+        # Obtenemos el contexto base de la clase padre
+        context = super().get_context_data(**kwargs)
+        
+        # Accedemos a la sesión a través de self.request
+        cart = self.request.session.get('cart', {})
+        items = []
+        total_precio = 0
 
-    # Actualizamos el total al entrar aquí por si acaso
-    actualizar_total_carrito(request)
+        for product_id, cantidad in cart.items():
+            try:
+                producto = Producto.objects.get(pk=product_id)
+                subtotal = float(producto.precio_base) * cantidad
+                total_precio += subtotal
+                
+                items.append({
+                    'producto': producto,
+                    'cantidad': cantidad,
+                    'subtotal': subtotal
+                })
+            except Producto.DoesNotExist:
+                # Si el producto ya no existe en la BD, lo saltamos
+                continue
 
-    context = {
-        'items': items,
-        'total_precio': total_precio
-    }
-    return render(request, 'carrito.html', context)
+        # Llamamos a la función auxiliar pasando el request (self.request)
+        # Asegúrate de tener importada esta función
+        if 'actualizar_total_carrito' in globals():
+             actualizar_total_carrito(self.request)
+
+        # Agregamos nuestros datos calculados al contexto
+        context['items'] = items
+        context['total_precio'] = total_precio
+        
+        return context
+
 
 
 # ajax
