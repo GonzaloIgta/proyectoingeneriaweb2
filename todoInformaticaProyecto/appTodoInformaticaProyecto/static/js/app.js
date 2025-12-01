@@ -1,9 +1,10 @@
-// Espera a que el DOM este cargado entero funcion jquery
+// Espera a que el DOM esté completamente cargado
 $(document).ready(function() {
     
-    // Captura  click en el boton añadir al carrito
+    // --- 1. LÓGICA DE AÑADIR AL CARRITO (Página de Producto) ---
     $('#btn-add-to-cart').on('click', function(e) {
         e.preventDefault(); 
+        console.log("Click en Añadir al carrito");
 
         const productId = $(this).data('product-id');
         const csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
@@ -11,37 +12,99 @@ $(document).ready(function() {
         const $button = $(this);
         const originalText = $button.html();
         
-        // Deshabilitar boton cuando sea clickado
         $button.prop('disabled', true).text('Añadiendo...');
 
-        // ajax
         $.ajax({
-            url: '/api/add-to-cart/', // La URL en urls.py
+            url: '/api/add-to-cart/', 
             type: 'POST',
             data: {
                 'product_id': productId,
                 'csrfmiddlewaretoken': csrfToken
             },
             dataType: 'json', 
-            
             success: function(response) {
-                // manipular dom
                 const $successMsg = $('#success-message');
-                
-                $successMsg.text(`¡Producto añadido! Total en carrito: ${response.cart_count} items.`)
-                           .fadeIn(400) // mostrar suave
-                           .delay(2000) // Esperar 2 segundos
-                           .fadeOut(400, function() { // ocultar suave
-                                // Restaurar el boton al terminar
+                $successMsg.text(`¡Añadido! Total: ${response.cart_count}`)
+                           .fadeIn(400).delay(2000).fadeOut(400, function() {
                                 $button.prop('disabled', false).html(originalText);
                            });
+                // Actualizar contador del menú si existe
+                $('#nav-cart-count').text(response.cart_count);
             },
-            
             error: function(xhr, status, error) {
-                console.error("Error al añadir al carrito:", status, error);
-                alert("Hubo un error al contactar al servidor. Inténtalo de nuevo.");
+                console.error("Error al añadir:", error);
+                alert("Error al conectar con el servidor.");
                 $button.prop('disabled', false).html(originalText);
             }
         });
     });
+
+    // --- 2. LÓGICA DE ACTUALIZAR CANTIDAD (+ y -) ---
+    // Usamos $(document).on para que funcione aunque los elementos cambien
+    $(document).on('click', '.btn-update-cart', function(e) {
+        e.preventDefault();
+        
+        const productId = $(this).data('product-id');
+        const action = $(this).data('action');
+        const csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
+
+        console.log(`Actualizando: ID ${productId}, Acción: ${action}`);
+
+        $.ajax({
+            url: '/api/update-cart-item/',
+            type: 'POST',
+            data: {
+                'product_id': productId,
+                'action': action,
+                'csrfmiddlewaretoken': csrfToken
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    // Recargamos la página para ver los precios actualizados
+                    location.reload(); 
+                } else {
+                    alert("Error: " + response.message);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("Error al actualizar:", xhr.responseText);
+                alert("Hubo un error al actualizar el carrito.");
+            }
+        });
+    });
+
+    // --- 3. LÓGICA DE ELIMINAR PRODUCTO (Papelera) ---
+    $(document).on('click', '.btn-remove-item', function(e) {
+        e.preventDefault();
+        
+        if(!confirm("¿Seguro que quieres eliminar este producto?")) return;
+
+        const productId = $(this).data('product-id');
+        const csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
+
+        console.log(`Eliminando: ID ${productId}`);
+
+        $.ajax({
+            url: '/api/remove-from-cart/',
+            type: 'POST',
+            data: {
+                'product_id': productId,
+                'csrfmiddlewaretoken': csrfToken
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    location.reload();
+                } else {
+                    alert("Error: " + response.message);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("Error al eliminar:", xhr.responseText);
+                alert("Hubo un error al eliminar el producto.");
+            }
+        });
+    });
+
 });
