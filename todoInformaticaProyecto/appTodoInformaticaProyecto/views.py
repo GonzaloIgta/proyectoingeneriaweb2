@@ -1,5 +1,8 @@
 from django.views.generic import ListView, DetailView
 from .models import TipoProducto, Producto, Tienda
+from django.views.decorators.http import require_POST
+from django.http import JsonResponse
+
 
 # Devuelve el listado de tipos de productos (usando ListView)
 class IndexTipoProductoView(ListView):
@@ -81,7 +84,7 @@ def add_to_cart_ajax(request):
         return JsonResponse({
             'status': 'success', 
             'message': 'Producto añadido al carrito.',
-            'cart_count': new_cart_count 
+            'cart_count': new_cart_count
         })
 
     except Exception as e:

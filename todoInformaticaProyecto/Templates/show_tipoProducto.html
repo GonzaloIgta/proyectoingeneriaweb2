@@ -7,7 +7,9 @@
 {% block content %}
   <a href="{% url 'index' %}" class="btn btn-outline-secondary mb-4">&larr; {% trans "Volver a Categorías" %}</a>
 
-  <h1 class="display-5 border-bottom pb-3 mb-4">{% blocktrans with nombre_tipo=tipo.nombre %}Categoría: {{ nombre_tipo }}{% endblocktrans %}</h1>
+  <h1 class="display-5 border-bottom pb-3 mb-4">
+    {% blocktrans with nombre_tipo=tipo.nombre %}Categoría: {{ nombre_tipo }}{% endblocktrans %}
+  </h1>
 
   <h2 class="fs-3 mb-3">{% trans "Productos Disponibles" %}</h2>
 
@@ -19,9 +21,10 @@
             <h5 class="mb-1">{{ producto.nombre }}</h5>
             <small class="text-muted">{{ producto.descripcion|truncatewords:20 }}</small>
           </div>
-          {% blocktrans with precio=producto.precio_base %}
-          <span class="badge bg-primary rounded-pill fs-6">{{ precio }} €</span>
-          {% endblocktrans %}
+          {# span fuera del blocktrans para no mezclar HTML con traducciones #}
+          <span class="badge bg-primary rounded-pill fs-6">
+            {% blocktrans with precio=producto.preciobase %}{{ precio }} €{% endblocktrans %}
+          </span>
         </a>
       {% endfor %}
     </div>

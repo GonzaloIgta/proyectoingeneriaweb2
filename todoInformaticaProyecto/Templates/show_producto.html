@@ -30,11 +30,11 @@
             <button id="btn-add-to-cart" 
                     data-product-id="{{ producto.id }}"
                     class="btn btn-success btn-lg me-3">
-                <i class="bi bi-cart-plus-fill"></i> Añadir al Carrito
+                <i class="bi bi-cart-plus-fill"></i> {% trans "Añadir al Carrito" %}
             </button>
             
             <div id="success-message" class="alert alert-success p-2 mb-0" style="display: none;">
-                ¡Producto añadido!
+                {% trans "¡Producto añadido!" %}
             </div>
       </div>
     </div>
@@ -59,3 +59,4 @@
   </div>
 </div>
 {% endblock %}
+

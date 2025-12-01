@@ -27,9 +27,9 @@
                   <h5 class="mb-1">{{ producto.nombre }}</h5>
                   <small class="text-muted">{{ producto.tipo.nombre }}</small>
                 </div>
-                {% blocktrans with precio=producto.precio_base %}
-                <span class="badge bg-primary rounded-pill fs-6">{{ precio }} €</span>
-                {% endblocktrans %}
+                <span class="badge bg-primary rounded-pill fs-6">
+                    {% blocktrans with precio=producto.preciobase %}{{ precio }} €{% endblocktrans %}
+                </span>
               </a>
             {% endfor %}
           </div>
