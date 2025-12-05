@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-01 14:21+0100\n"
+"POT-Creation-Date: 2025-12-05 09:04+0100\n"
 "PO-Revision-Date: 2025-12-01 14:21+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: English <en@li.org>\n"
@@ -16,9 +16,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-#: .\Templates\base.html:9 .\Templates\base.html:24 .\Templates\base.html:78
+
+#: .\Templates\base.html:9 .\Templates\base.html:24 .\Templates\base.html:95
 #: .\Templates\index_tipoProducto.html:5 .\Templates\show_producto.html:6
-#: .\Templates\show_tipoProducto.html:5
+#: .\Templates\show_tienda.html:5 .\Templates\show_tipoProducto.html:5
 msgid "Todo Informática"
 msgstr "All Informatic"
 
@@ -26,15 +27,36 @@ msgstr "All Informatic"
 msgid "Alternar navegación"
 msgstr "Toggle navigation"
 
-#: .\Templates\base.html:56
-msgid "Inicio (Tipos de Producto)"
-msgstr "Home (Product Types)"
+#: .\Templates\base.html:37
+msgid "Seleccionar idioma"
+msgstr "Choose a Language"
+
+#: .\Templates\base.html:57
+msgid "Inicio"
+msgstr "Home"
 
 #: .\Templates\base.html:61
+
+msgid "Categorías"
+msgstr "Categories"
+
+#: .\Templates\base.html:65
+msgid "Productos"
+msgstr "Product"
+
+#: .\Templates\base.html:69
+msgid "Tiendas"
+msgstr "Stores"
+
+#: .\Templates\base.html:73
+msgid "Buscar"
+msgstr "Search"
+
+#: .\Templates\base.html:77
 msgid "Carrito"
 msgstr "Cart"
 
-#: .\Templates\base.html:78
+#: .\Templates\base.html:95
 msgid "Todos los derechos reservados."
 msgstr "All rights reserved."
 
@@ -151,6 +173,29 @@ msgstr "Available in the following stores"
 msgid "Este producto no está disponible en ninguna tienda actualmente."
 msgstr "This product is not currently available in any store."
 
+#: .\Templates\show_tienda.html:8
+
+msgid "Volver al inicio"
+msgstr "Back to Home"
+
+#: .\Templates\show_tienda.html:14
+
+msgid "Dirección"
+msgstr "Address"
+
+#: .\Templates\show_tienda.html:15
+msgid "Contacto"
+msgstr "Contact"
+
+#: .\Templates\show_tienda.html:19
+msgid "Productos en esta tienda:"
+msgstr "Products of the stroe"
+
+
+#: .\Templates\show_tienda.html:38
+msgid "Esta tienda no tiene productos registrados por el momento."
+msgstr "This store has not any product available for the moment"
+
 #: .\Templates\show_tipoProducto.html:8
 msgid "Volver a Categorías"
 msgstr "Back to Categories"
@@ -167,3 +212,6 @@ msgstr "Available Products"
 #: .\Templates\show_tipoProducto.html:31
 msgid "Actualmente no hay productos disponibles en esta categoría."
 msgstr "There are currently no products available in this category."
+
+#~ msgid "Inicio (Tipos de Producto)"
+#~ msgstr "Home (Product Types)"
