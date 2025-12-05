@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from django.views.generic import ListView, DetailView, TemplateView
 from .models import TipoProducto, Producto, Tienda
+from django.db.models import Q
 
 
 # Devuelve el listado de tipos de productos
@@ -180,3 +181,35 @@ def remove_from_cart_ajax(request):
         })
         
     return JsonResponse({'status': 'error', 'message': 'No se pudo eliminar'})
+
+
+
+
+#Listar todos los productos
+class AllProductsView(ListView):
+    model = Producto
+    template_name = 'all_products.html'
+    context_object_name = 'productos'
+    paginate_by = 9  # Opcional: para que no salgan infinitos en una pagina
+    ordering = ['nombre']
+
+#Listar todas las tiendas
+class IndexTiendaView(ListView):
+    model = Tienda
+    template_name = 'index_tiendas.html'
+    context_object_name = 'tiendas'
+
+#Buscar
+class SearchView(ListView):
+    model = Producto
+    template_name = 'search_results.html'
+    context_object_name = 'productos'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        if query:
+            # Busca por nombre O por descripción
+            return Producto.objects.filter(
+                Q(nombre__icontains=query) | Q(descripcion__icontains=query)
+            )
+        return Producto.objects.none()  # Retorna lista vacía si no hay búsqueda

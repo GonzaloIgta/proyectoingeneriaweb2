@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Nuestras Tiendas" %} - {% trans "Todo Informática" %}{% endblock %}
+
+{% block content %}
+  <div class="text-center mb-5">
+    <h1 class="display-4">{% trans "Encuentra tu tienda" %}</h1>
+    <p class="lead text-muted">{% trans "Acércate a nuestras sedes físicas." %}</p>
+  </div>
+
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    {% for tienda in tiendas %}
+      <div class="col">
+        <div class="card h-100 shadow-sm border-0 overflow-hidden">
+          
+          <div class="map-container bg-light" style="height: 300px; width: 100%;">
+            <iframe 
+                width="100%" 
+                height="100%" 
+                frameborder="0" 
+                style="border:0;" 
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://maps.google.com/maps?q={% if forloop.counter == 1 %}Universidad+de+Deusto+Ingenieria{% elif forloop.counter == 2 %}Estadio+San+Mames+Bilbao{% else %}{{ tienda.direccion }}{% endif %}&t=&z=15&ie=UTF8&iwloc=&output=embed">
+            </iframe>
+          </div>
+
+          <div class="card-body p-4">
+            <h3 class="card-title fw-bold mb-3">{{ tienda.nombre }}</h3>
+            
+            <ul class="list-unstyled mb-4">
+                <li class="mb-2 d-flex align-items-start">
+                    <i class="bi bi-geo-alt-fill text-danger me-2 mt-1"></i>
+                    <span>{{ tienda.direccion }}</span>
+                </li>
+                <li class="mb-2 d-flex align-items-center">
+                    <i class="bi bi-telephone-fill text-primary me-2"></i>
+                    <span>{{ tienda.contacto }}</span>
+                </li>
+            </ul>
+
+            <div class="d-grid gap-2">
+                <a href="{% url 'tienda' tienda.id %}" class="btn btn-outline-dark">
+                    {% trans "Ver detalles" %}
+                </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <div class="col-12 text-center">
+          <p>{% trans "No hay tiendas registradas." %}</p>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

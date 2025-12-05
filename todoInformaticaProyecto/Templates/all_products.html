@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %} {# Importante cargar static para imagenes por defecto #}
+
+{% block title %}{% trans "Todos los Productos" %} - {% trans "Todo Informática" %}{% endblock %}
+
+{% block content %}
+  <h1 class="display-5 border-bottom pb-3 mb-4">{% trans "Catálogo Completo" %}</h1>
+
+  {% if productos %}
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      {% for producto in productos %}
+        <div class="col">
+          <div class="card h-100 shadow-sm border-0">
+            
+            <div style="height: 250px; overflow: hidden;" class="position-relative">
+                {% if producto.imagen %}
+                  <img src="{{ producto.imagen.url }}" class="card-img-top h-100 w-100" style="object-fit: contain; padding: 20px;" alt="{{ producto.nombre }}">
+                {% else %}
+                  <img src="{% static 'images/no-image.png' %}" class="card-img-top h-100 w-100" style="object-fit: cover;" alt="Sin imagen">
+                {% endif %}
+                
+                <span class="position-absolute top-0 end-0 badge bg-secondary m-3">
+                    {{ producto.tipo.nombre }}
+                </span>
+            </div>
+
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">{{ producto.nombre }}</h5>
+              
+              <p class="card-text text-muted flex-grow-1">
+                {{ producto.descripcion|truncatewords:15 }}
+              </p>
+              
+              <div class="d-flex justify-content-between align-items-center mt-3 border-top pt-3">
+                <span class="fs-4 fw-bold text-primary">{{ producto.precio_base }} €</span>
+                
+                <a href="{% url 'producto' producto.id %}" class="btn btn-outline-primary">
+                    {% trans "Ver detalles" %}
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="alert alert-info">
+        {% trans "No hay productos disponibles actualmente." %}
+    </div>
+  {% endif %}
+{% endblock %}
