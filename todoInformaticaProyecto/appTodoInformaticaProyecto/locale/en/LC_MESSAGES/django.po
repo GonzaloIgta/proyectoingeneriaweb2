@@ -1,14 +1,13 @@
-# SOME DESCRIPTIVE TITLE.
+# English translations for the Todo Informática project.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-05 09:04+0100\n"
-"PO-Revision-Date: 2025-12-01 14:21+0100\n"
+"POT-Creation-Date: 2025-12-06 15:59+0100\n"
+"PO-Revision-Date: 2025-12-06 16:00+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: English <en@li.org>\n"
 "Language: en\n"
@@ -17,52 +16,114 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\Templates\base.html:9 .\Templates\base.html:24 .\Templates\base.html:95
+#: .\Templates\all_products.html:5
+msgid "Todos los Productos"
+msgstr "All Products"
+
+#: .\Templates\all_products.html:5 .\Templates\base.html:9
+#: .\Templates\base.html:119 .\Templates\base.html:203
+#: .\Templates\base.html:248 .\Templates\index_tiendas.html:4
 #: .\Templates\index_tipoProducto.html:5 .\Templates\show_producto.html:6
 #: .\Templates\show_tienda.html:5 .\Templates\show_tipoProducto.html:5
 msgid "Todo Informática"
-msgstr "All Informatic"
+msgstr "Todo Informática"
 
-#: .\Templates\base.html:26
-msgid "Alternar navegación"
-msgstr "Toggle navigation"
+#: .\Templates\all_products.html:8
+msgid "Catálogo Completo"
+msgstr "Full Catalog"
 
-#: .\Templates\base.html:37
-msgid "Seleccionar idioma"
-msgstr "Choose a Language"
+#: .\Templates\all_products.html:39 .\Templates\index_tiendas.html:45
+#: .\Templates\show_tipoProducto.html:54
+msgid "Ver detalles"
+msgstr "View details"
 
-#: .\Templates\base.html:57
+#: .\Templates\all_products.html:50
+msgid "No hay productos disponibles actualmente."
+msgstr "No products currently available."
+
+#: .\Templates\base.html:130 .\Templates\base.html:217
 msgid "Inicio"
 msgstr "Home"
 
-#: .\Templates\base.html:61
-
+#: .\Templates\base.html:133 .\Templates\index_tipoProducto.html:5
 msgid "Categorías"
 msgstr "Categories"
 
-#: .\Templates\base.html:65
+#: .\Templates\base.html:136
 msgid "Productos"
-msgstr "Product"
+msgstr "Products"
 
-#: .\Templates\base.html:69
+#: .\Templates\base.html:139 .\Templates\base.html:219
 msgid "Tiendas"
 msgstr "Stores"
 
-#: .\Templates\base.html:73
+#: .\Templates\base.html:147 .\Templates\search_results.html:12
 msgid "Buscar"
 msgstr "Search"
 
-#: .\Templates\base.html:77
+#: .\Templates\base.html:176
 msgid "Carrito"
 msgstr "Cart"
 
-#: .\Templates\base.html:95
+#: .\Templates\base.html:205
+msgid ""
+"Expertos en tecnología. Ofrecemos los mejores componentes y periféricos con "
+"garantía de calidad y soporte especializado."
+msgstr ""
+"Technology experts. We offer the best components and peripherals with quality "
+"assurance and specialized support."
+
+#: .\Templates\base.html:215
+msgid "Navegación"
+msgstr "Navigation"
+
+#: .\Templates\base.html:218
+msgid "Catálogo"
+msgstr "Catalog"
+
+#: .\Templates\base.html:220
+msgid "Mi Carrito"
+msgstr "My Cart"
+
+#: .\Templates\base.html:225
+msgid "Destacados"
+msgstr "Featured"
+
+#: .\Templates\base.html:227
+msgid "Ordenadores"
+msgstr "Computers"
+
+#: .\Templates\base.html:228
+msgid "Componentes"
+msgstr "Components"
+
+#: .\Templates\base.html:229
+msgid "Periféricos"
+msgstr "Peripherals"
+
+#: .\Templates\base.html:230
+msgid "Ofertas"
+msgstr "Offers"
+
+#: .\Templates\base.html:235 .\Templates\show_tienda.html:15
+msgid "Contacto"
+msgstr "Contact"
+
+#: .\Templates\base.html:248
 msgid "Todos los derechos reservados."
 msgstr "All rights reserved."
 
+#: .\Templates\base.html:251
+msgid "Privacidad"
+msgstr "Privacy"
+
+#: .\Templates\base.html:252
+msgid "Términos y Condiciones"
+msgstr "Terms and Conditions"
+
 #: .\Templates\carrito.html:4
 msgid "Mi Carrito - Todo Informática"
-msgstr "My Cart - All Things Computing"
+msgstr "My Cart - Todo Informática"
 
 #: .\Templates\carrito.html:8
 msgid "Tu Carrito de Compras"
@@ -120,98 +181,139 @@ msgstr "Add some amazing products!"
 msgid "Ir a la tienda"
 msgstr "Go to the shop"
 
-#: .\Templates\index_tipoProducto.html:5
-msgid "Tipos de Producto"
-msgstr "Product Types"
+#: .\Templates\index_tiendas.html:4
+msgid "Nuestras Tiendas"
+msgstr "Our Stores"
 
-#: .\Templates\index_tipoProducto.html:9
-msgid "Categorías de Productos"
-msgstr "Product Categories"
+#: .\Templates\index_tiendas.html:8
+msgid "Encuentra tu tienda"
+msgstr "Find your store"
 
-#: .\Templates\index_tipoProducto.html:10
-msgid "Explora nuestras categorías de productos informáticos."
-msgstr "Explore our computer product categories."
+#: .\Templates\index_tiendas.html:9
+msgid "Acércate a nuestras sedes físicas."
+msgstr "Visit our physical locations."
 
-#: .\Templates\index_tipoProducto.html:20
-msgid "Ver todos los productos de esta categoría."
-msgstr "View all products in this category."
+#: .\Templates\index_tiendas.html:53
+msgid "No hay tiendas registradas."
+msgstr "No stores registered."
 
-#: .\Templates\index_tipoProducto.html:22
-msgid "Ver Productos"
-msgstr "View Products"
+#: .\Templates\index_tipoProducto.html:11
+msgid "CATÁLOGO"
+msgstr "CATALOG"
 
-#: .\Templates\index_tipoProducto.html:29
-msgid "No hay tipos de producto disponibles."
-msgstr "No product types available."
+#: .\Templates\index_tipoProducto.html:13
+msgid "Explora por Categoría"
+msgstr "Browse by Category"
 
-#: .\Templates\show_producto.html:10
+#: .\Templates\index_tipoProducto.html:15
+msgid ""
+"Encuentra exactamente lo que necesitas navegando por nuestras secciones "
+"especializadas."
+msgstr ""
+"Find exactly what you need by browsing our specialized sections."
+
+#: .\Templates\index_tipoProducto.html:35
+msgid "Ver productos"
+msgstr "View products"
+
+#: .\Templates\index_tipoProducto.html:54
+msgid "No hay categorías disponibles en este momento."
+msgstr "No categories available at the moment."
+
+#: .\Templates\search_results.html:4 .\Templates\search_results.html:7
+msgid "Buscar Productos"
+msgstr "Search Products"
+
+#: .\Templates\search_results.html:11
+msgid "¿Qué estás buscando?"
+msgstr "What are you looking for?"
+
+#: .\Templates\search_results.html:17
+msgid "Resultados para:"
+msgstr "Results for:"
+
+#: .\Templates\search_results.html:33
+msgid "No encontramos productos que coincidan con tu búsqueda."
+msgstr "We couldn't find any products matching your search."
+
+#: .\Templates\show_producto.html:17
+msgid "Volver al Carrito"
+msgstr "Back to Cart"
+
+#: .\Templates\show_producto.html:22
+msgid "Volver al Catálogo Completo"
+msgstr "Back to Full Catalog"
+
+#: .\Templates\show_producto.html:27
+msgid "Volver a los resultados de búsqueda"
+msgstr "Back to search results"
+
+#: .\Templates\show_producto.html:33
 #, python-format
 msgid "Volver a %(nombre_tipo)s"
 msgstr "Back to %(nombre_tipo)s"
 
-#: .\Templates\show_producto.html:20
+#: .\Templates\show_producto.html:48
 msgid "Sin imagen disponible"
 msgstr "No image available"
 
-#: .\Templates\show_producto.html:31
+#: .\Templates\show_producto.html:59
 msgid "Descripción"
 msgstr "Description"
 
-#: .\Templates\show_producto.html:38
+#: .\Templates\show_producto.html:66
 msgid "Añadir al Carrito"
 msgstr "Add to Cart"
 
-#: .\Templates\show_producto.html:42
+#: .\Templates\show_producto.html:70
 msgid "¡Producto añadido!"
 msgstr "Product added!"
 
-#: .\Templates\show_producto.html:52
+#: .\Templates\show_producto.html:80
 msgid "Disponible en las siguientes tiendas"
 msgstr "Available in the following stores"
 
-#: .\Templates\show_producto.html:66
+#: .\Templates\show_producto.html:94
 msgid "Este producto no está disponible en ninguna tienda actualmente."
 msgstr "This product is not currently available in any store."
 
 #: .\Templates\show_tienda.html:8
-
 msgid "Volver al inicio"
 msgstr "Back to Home"
 
 #: .\Templates\show_tienda.html:14
-
 msgid "Dirección"
 msgstr "Address"
 
-#: .\Templates\show_tienda.html:15
-msgid "Contacto"
-msgstr "Contact"
-
 #: .\Templates\show_tienda.html:19
 msgid "Productos en esta tienda:"
-msgstr "Products of the stroe"
-
+msgstr "Products in this store:"
 
 #: .\Templates\show_tienda.html:38
 msgid "Esta tienda no tiene productos registrados por el momento."
-msgstr "This store has not any product available for the moment"
+msgstr "This store currently has no registered products."
 
-#: .\Templates\show_tipoProducto.html:8
+#: .\Templates\show_tipoProducto.html:12
 msgid "Volver a Categorías"
 msgstr "Back to Categories"
 
-#: .\Templates\show_tipoProducto.html:11
+#: .\Templates\show_tipoProducto.html:15
 #, python-format
-msgid "Categoría: %(nombre_tipo)s"
-msgstr "Category: %(nombre_tipo)s"
+msgid "%(nombre_tipo)s"
+msgstr "%(nombre_tipo)s"
 
-#: .\Templates\show_tipoProducto.html:14
-msgid "Productos Disponibles"
-msgstr "Available Products"
+#: .\Templates\show_tipoProducto.html:17
+msgid "Explora los mejores productos de esta sección."
+msgstr "Explore the best products in this section."
 
-#: .\Templates\show_tipoProducto.html:31
-msgid "Actualmente no hay productos disponibles en esta categoría."
-msgstr "There are currently no products available in this category."
+#: .\Templates\show_tipoProducto.html:68
+msgid "No hay productos en esta categoría aún."
+msgstr "There are no products in this category yet."
 
-#~ msgid "Inicio (Tipos de Producto)"
-#~ msgstr "Home (Product Types)"
+#: .\Templates\show_tipoProducto.html:69
+msgid "Estamos reponiendo stock. ¡Vuelve pronto!"
+msgstr "We are restocking. Come back soon!"
+
+#: .\Templates\show_tipoProducto.html:71
+msgid "Explorar otras categorías"
+msgstr "Explore other categories"
