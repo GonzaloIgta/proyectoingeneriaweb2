@@ -37,7 +37,7 @@
                                         {% endif %}
                                         <div>
                                             <h5 class="mb-0">
-                                                <a href="{% url 'producto' item.producto.id %}" class="text-decoration-none text-dark">
+                                                <a href="{% url 'producto' item.producto.id %}?origin=cart" class="text-decoration-none text-dark fw-bold">
                                                     {{ item.producto.nombre }}
                                                 </a>
                                             </h5>

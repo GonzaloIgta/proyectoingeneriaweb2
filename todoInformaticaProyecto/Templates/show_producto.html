@@ -7,7 +7,35 @@
 {% endblock %}
 
 {% block content %}
-<a href="{% url 'detail' producto.tipo.id %}" class="btn btn-outline-secondary mb-4">&larr; {% blocktrans with nombre_tipo=producto.tipo.nombre %}Volver a {{ nombre_tipo }}{% endblocktrans %}</a>
+
+
+    
+<div class="mb-4">
+    
+    {% if request.GET.origin == 'cart' %}
+        <a href="{% url 'carrito' %}" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left"></i> {% trans "Volver al Carrito" %}
+        </a>
+
+    {% elif request.GET.origin == 'all' %}
+        <a href="{% url 'all_products' %}" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left"></i> {% trans "Volver al Catálogo Completo" %}
+        </a>
+
+    {% elif request.GET.origin == 'search' %}
+        <a href="javascript:history.back()" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left"></i> {% trans "Volver a los resultados de búsqueda" %}
+        </a>
+
+    {% else %}
+        <a href="{% url 'detail' producto.tipo.id %}" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left"></i> 
+            {% blocktrans with nombre_tipo=producto.tipo.nombre %}Volver a {{ nombre_tipo }}{% endblocktrans %}
+        </a>
+        
+    {% endif %}
+
+</div>
 
 <div class="card shadow-sm border-0">
   <div class="card-body p-4 p-md-5">

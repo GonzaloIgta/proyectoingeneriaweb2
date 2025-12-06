@@ -35,7 +35,7 @@
               <div class="d-flex justify-content-between align-items-center mt-3 border-top pt-3">
                 <span class="fs-4 fw-bold text-primary">{{ producto.precio_base }} €</span>
                 
-                <a href="{% url 'producto' producto.id %}" class="btn btn-outline-primary">
+                <a href="{% url 'producto' producto.id %}?origin=all" class="btn btn-outline-primary">
                     {% trans "Ver detalles" %}
                 </a>
               </div>
