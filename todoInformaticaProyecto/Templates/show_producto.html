@@ -8,10 +8,7 @@
 
 {% block content %}
 
-
-    
 <div class="mb-4">
-    
     {% if request.GET.origin == 'cart' %}
         <a href="{% url 'carrito' %}" class="btn btn-outline-secondary">
             <i class="bi bi-arrow-left"></i> {% trans "Volver al Carrito" %}
@@ -32,9 +29,7 @@
             <i class="bi bi-arrow-left"></i> 
             {% blocktrans with nombre_tipo=producto.tipo.nombre %}Volver a {{ nombre_tipo }}{% endblocktrans %}
         </a>
-        
     {% endif %}
-
 </div>
 
 <div class="card shadow-sm border-0">
@@ -43,11 +38,13 @@
 
       <div class="col-md-4 text-md-end">
         {% if producto.imagen %}
-          <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" class="img-fluid mb-4" />
+          {# CORRECCIÓN: Quitada la barra / del final #}
+          <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" class="img-fluid mb-4">
         {% else %}
-          <img src="{% static 'images/no-image.png' %}" alt="{% trans 'Sin imagen disponible' %}" class="img-fluid mb-4" />
+          {# CORRECCIÓN: Quitada la barra / del final #}
+          <img src="{% static 'images/no-image.png' %}" alt="{% trans 'Sin imagen disponible' %}" class="img-fluid mb-4">
         {% endif %}
-                <span class="display-4 text-primary fw-bold">{{ producto.precio_base }} €</span>
+        <span class="display-4 text-primary fw-bold">{{ producto.precio_base }} €</span>
       </div>
 
       <div class="col-md-8">
@@ -57,7 +54,13 @@
         <hr class="my-4">
 
         <h2 class="fs-3 mb-3">{% trans "Descripción" %}</h2>
-        <p class="fs-5">{{ producto.descripcion|linebreaks }}</p>
+        
+        {# CORRECCIÓN IMPORTANTE: #}
+        {# Cambiamos <p> por <div> porque el filtro 'linebreaks' ya crea sus propios <p> #}
+        {# Esto soluciona el error "No p element in scope" #}
+        <div class="fs-5">
+            {{ producto.descripcion|linebreaks }}
+        </div>
 
         <div class="d-flex align-items-center mb-4">
           <button id="btn-add-to-cart" 
@@ -84,8 +87,13 @@
         <div class="list-group">
           {% for tienda in tiendas %}
             <a href="{% url 'tienda' tienda.id %}" class="list-group-item list-group-item-action">
-              <h5 class="mb-1">{{ tienda.nombre }}</h5>
-              <small class="text-muted">{{ tienda.direccion }}</small>
+              <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                      <h5 class="mb-1">{{ tienda.nombre }}</h5>
+                      <small class="text-muted">{{ tienda.direccion }}</small>
+                  </div>
+                  <i class="bi bi-chevron-right"></i>
+              </div>
             </a>
           {% endfor %}
         </div>

@@ -4,6 +4,49 @@
 
 {% block title %}{% trans "Categorías" %} - {% trans "Todo Informática" %}{% endblock %}
 
+{# --- AQUÍ ESTÁ LA CORRECCIÓN: Usamos el bloque extra_css --- #}
+{% block extra_css %}
+  <style>
+    /* Caja del icono con degradado */
+    .icon-box {
+        width: 70px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 16px;
+        background: linear-gradient(135deg, #0d6efd, #0a58ca);
+        box-shadow: 0 4px 10px rgba(13, 110, 253, 0.3);
+        transition: transform 0.3s ease;
+    }
+
+    /* Efectos al pasar el ratón por la tarjeta */
+    .card-hover {
+        background-color: #fff;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        border-radius: 20px;
+    }
+
+    .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
+    }
+
+    /* Animación del icono al hacer hover */
+    .card-hover:hover .icon-box {
+        transform: scale(1.1) rotate(-5deg);
+    }
+
+    /* Animación de la flechita "Ver productos" */
+    .transition-icon {
+        transition: transform 0.3s ease;
+    }
+    .card-hover:hover .transition-icon {
+        transform: translateX(5px);
+    }
+  </style>
+{% endblock %}
+
 {% block content %}
   
   <div class="text-center mb-5 animate-fade-up">
@@ -56,45 +99,5 @@
       </div>
     {% endif %}
   </div>
-
-  <style>
-    /* Caja del icono con degradado */
-    .icon-box {
-        width: 70px;
-        height: 70px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 16px;
-        background: linear-gradient(135deg, #0d6efd, #0a58ca); /* Azul degradado */
-        box-shadow: 0 4px 10px rgba(13, 110, 253, 0.3);
-        transition: transform 0.3s ease;
-    }
-
-    /* Efectos al pasar el ratón por la tarjeta */
-    .card-hover {
-        background-color: #fff;
-        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        border-radius: 20px;
-    }
-
-    .card-hover:hover {
-        transform: translateY(-5px); /* Sube un poco */
-        box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important; /* Sombra suave */
-    }
-
-    /* Animación del icono al hacer hover */
-    .card-hover:hover .icon-box {
-        transform: scale(1.1) rotate(-5deg);
-    }
-
-    /* Animación de la flechita "Ver productos" */
-    .transition-icon {
-        transition: transform 0.3s ease;
-    }
-    .card-hover:hover .transition-icon {
-        transform: translateX(5px);
-    }
-  </style>
 
 {% endblock %}

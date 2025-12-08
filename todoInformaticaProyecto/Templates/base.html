@@ -1,6 +1,6 @@
+<!DOCTYPE html>
 {% load i18n %}
 {% load static %}
-<!doctype html>
 {% get_current_language as LANGUAGE_CODE %}
 <html lang="{{ LANGUAGE_CODE|default:'es' }}" class="h-100">
 <head>
@@ -109,6 +109,11 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.05) !important;
         }
     </style>
+
+    {# --- IMPORTANTE: Este es el bloque que permite cargar CSS desde otras plantillas --- #}
+    {% block extra_css %}
+    {% endblock %}
+
 </head>
 <body class="d-flex flex-column h-100">
 
@@ -158,8 +163,8 @@
                         <li>
                             <form action="{% url 'set_language' %}" method="post" class="dropdown-item p-0">
                                 {% csrf_token %}
-                                <input name="next" type="hidden" value="{{ request.get_full_path }}" />
-                                <input name="language" type="hidden" value="{{ lang.code }}" />
+                                <input name="next" type="hidden" value="{{ request.get_full_path }}" >
+                                <input name="language" type="hidden" value="{{ lang.code }}" >
                                 <button type="submit" class="btn btn-link w-100 text-start text-decoration-none text-dark d-flex align-items-center px-3 py-2">
                                     {% if lang.code == LANGUAGE_CODE %}<i class="bi bi-check-circle-fill text-success me-2 small"></i>{% else %}<i class="bi bi-circle me-2 small text-muted"></i>{% endif %}
                                     {{ lang.name_local }}

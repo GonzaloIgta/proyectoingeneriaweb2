@@ -15,11 +15,10 @@
         <div class="card h-100 shadow-sm border-0 overflow-hidden">
           
           <div class="map-container bg-light" style="height: 300px; width: 100%;">
+            {# --- AQUÍ ESTÁ EL CAMBIO --- #}
+            {# Hemos movido el width, height y border al CSS (style) #}
             <iframe 
-                width="100%" 
-                height="100%" 
-                frameborder="0" 
-                style="border:0;" 
+                style="border:0; width: 100%; height: 100%;"
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
                 src="https://maps.google.com/maps?q={% if forloop.counter == 1 %}Universidad+de+Deusto+Ingenieria{% elif forloop.counter == 2 %}Estadio+San+Mames+Bilbao{% else %}{{ tienda.direccion }}{% endif %}&t=&z=15&ie=UTF8&iwloc=&output=embed">
