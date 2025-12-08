@@ -235,7 +235,6 @@
   const db = getFirestore(app);
 
   const myApp = createApp({
-    // 3. Importante: Vinculamos el ID del script-template aquí
     template: '#app-template',
     setup() {
       const contactos = useCollection(collection(db, 'agenda'));
