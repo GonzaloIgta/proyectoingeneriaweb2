@@ -38,10 +38,8 @@
 
       <div class="col-md-4 text-md-end">
         {% if producto.imagen %}
-          {# CORRECCIÓN: Quitada la barra / del final #}
           <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" class="img-fluid mb-4">
         {% else %}
-          {# CORRECCIÓN: Quitada la barra / del final #}
           <img src="{% static 'images/no-image.png' %}" alt="{% trans 'Sin imagen disponible' %}" class="img-fluid mb-4">
         {% endif %}
         <span class="display-4 text-primary fw-bold">{{ producto.precio_base }} €</span>
@@ -55,9 +53,6 @@
 
         <h2 class="fs-3 mb-3">{% trans "Descripción" %}</h2>
         
-        {# CORRECCIÓN IMPORTANTE: #}
-        {# Cambiamos <p> por <div> porque el filtro 'linebreaks' ya crea sus propios <p> #}
-        {# Esto soluciona el error "No p element in scope" #}
         <div class="fs-5">
             {{ producto.descripcion|linebreaks }}
         </div>
